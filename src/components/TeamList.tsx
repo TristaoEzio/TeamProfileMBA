@@ -7,25 +7,25 @@ const teamMembers = [
     id: '1',
     name: 'Ezio Moreira Tristão Junior',
     role: 'AI Developer',
-    imageUrl: 'https://via.placeholder.com/100',
+    imageUrl: 'https://i.ibb.co/wYNg5TP/ezio.png',
   },
   {
     id: '2',
     name: 'Guilherme Marcel de Almeida',
     role: 'Mobile Developer',
-    imageUrl: 'https://via.placeholder.com/100',
+    imageUrl: 'https://i.ibb.co/9rh6bMk/guilherme.png',
   },
   {
     id: '3',
     name: 'Margareth Moscardini de Oliveira',
     role: 'CFO',
-    imageUrl: 'https://via.placeholder.com/100',
+    imageUrl: 'https://i.ibb.co/nM04sYR/margareth.png',
   },
   {
     id: '4',
     name: 'Rodrigo Rodrigues dos Santos Guilherme',
-    role: 'Team Leader',
-    imageUrl: 'https://via.placeholder.com/100',
+    role: 'Tech Lead',
+    imageUrl: 'https://i.ibb.co/SJRFf2s/rodrigo.png',
   },
 ];
 

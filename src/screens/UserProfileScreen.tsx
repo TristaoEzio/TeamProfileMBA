@@ -1,5 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Linking,
+  ScrollView,
+} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {users} from '../data/users';
 
@@ -23,21 +31,50 @@ const UserProfileScreen: React.FC = () => {
     );
   }
 
+  const handlePress = (url: string) => {
+    Linking.openURL(url);
+  };
+
   return (
-    <View style={styles.container}>
-      <Image source={{uri: user.imageUrl}} style={styles.profileImage} />
-      <Text style={styles.name}>{user.name}</Text>
-      <Text style={styles.role}>{user.role}</Text>
-      <Text style={styles.bio}>{user.bio}</Text>
-    </View>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <View style={styles.container}>
+        <Image source={{uri: user.imageUrl}} style={styles.profileImage} />
+        <Text style={styles.name}>{user.name}</Text>
+        <Text style={styles.role}>{user.role}</Text>
+        <Text style={styles.bio}>{user.bio}</Text>
+        <TouchableOpacity
+          style={[styles.button, styles.linkedinButton]}
+          onPress={() => handlePress(user.linkedin)}>
+          <Text style={styles.buttonText}>LinkedIn</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, styles.githubButton]}
+          onPress={() => handlePress(user.github)}>
+          <Text style={styles.buttonText}>GitHub</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
     padding: 16,
     backgroundColor: '#fff',
+    alignItems: 'center',
+    width: '100%',
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 16,
   },
   title: {
     fontSize: 24,
@@ -45,30 +82,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 16,
   },
-  profileImage: {
-    width: 130,
-    height: 130,
-    borderRadius: 75,
-    marginBottom: 20,
-    marginTop: 10,
-    marginStart: 100,
-  },
   name: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
+    marginBottom: 8,
   },
   role: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'left',
-    marginBottom: 10,
+    fontSize: 18,
+    color: '#666',
+    marginBottom: 16,
   },
   bio: {
     fontSize: 16,
     textAlign: 'left',
-    marginBottom: 20,
-    paddingHorizontal: 0,
+    marginBottom: 24,
+  },
+  button: {
+    width: '100%', // Ajuste a largura para 100%
+    padding: 12,
+    borderRadius: 25,
+    alignItems: 'center',
+    marginTop: 12,
+    marginBottom: 12,
+  },
+  linkedinButton: {
+    backgroundColor: '#0077B5',
+  },
+  githubButton: {
+    backgroundColor: '#333',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 
